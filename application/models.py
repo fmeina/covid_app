@@ -1,6 +1,7 @@
 from application import db
 
 
+
 class Accounts(db.Model):
     __tablename__ = "accounts"
     account_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
