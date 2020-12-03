@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 
+{% block title %} Register {% endblock title %}
+
 {% block content %}
 
-<div class="jumbotron mt-2 text-center">
-    <h1>Rejestracja</h1>
-</div>
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.email.label }} {{ form.email() }}<br>
+    {{ form.login.label }} {{ form.login() }}<br>
+    {{ form.password.label }} {{ form.password() }}<br>
+    {{ form.pass_confirm.label }} {{ form.pass_confirm() }}
+    {{ form.submit() }}
+
+</form>
 
 {% endblock content %}
