@@ -87,3 +87,7 @@ input[type=submit]:hover {
     float: none;
   }
 }
+
+p.dotted {
+  outline-style: dotted; outline-color: #78e3e3;
+}

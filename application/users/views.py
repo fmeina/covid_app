@@ -1,9 +1,8 @@
 from flask import render_template, request, redirect, request, url_for, flash, abort, Blueprint
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from application.users.forms import LoginForm, RegistrationForm
 from application.models import Account
 from application import db
-
 
 users = Blueprint('users', __name__)
 
@@ -12,10 +11,6 @@ users = Blueprint('users', __name__)
     - wyrzucic welcome_user() i zamiast tego przekierowac do core
 """
 
-@login_required
-@users.route('/welcome')
-def welcome_user():
-    return render_template('welcome.html')
 
 
 @login_required
@@ -28,6 +23,8 @@ def logout():
 
 @users.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('core.index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = Account.query.filter_by(email=form.email.data).first()
@@ -36,18 +33,20 @@ def login():
             flash('Logged in successfully.')
             next = request.args.get('next')
             if next is None or not next[0] == '/':
-                next = url_for('users.welcome_user')
+                next = url_for('core.index')
             return redirect(next)
     return render_template('login.html', form=form)
 
 
 @users.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('core.index'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = Account(email=form.email.data,
-                    login=form.login.data,
-                    password=form.password.data)
+                       login=form.login.data,
+                       password=form.password.data)
         db.session.add(user)
         db.session.commit()
         flash('Thanks for registering! Now you can login!')
