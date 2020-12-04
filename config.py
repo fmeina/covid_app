@@ -9,7 +9,7 @@ class Config(object):
 class DevelopmentConfig(Config):
     ENV = 'development'
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost/covdb_dev'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root123456@localhost/covdb_dev'
     SECRET_KEY = secrets.token_urlsafe(16)
     
 class ProductionConfig(Config):
