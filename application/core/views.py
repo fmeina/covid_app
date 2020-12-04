@@ -8,8 +8,7 @@ core = Blueprint('core', __name__)
 def index():
     return render_template('index.html')
 
-
-@login_required
 @core.route('/stats')
+@login_required
 def stats():
     return render_template('stats.html')

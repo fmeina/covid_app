@@ -12,9 +12,8 @@ users = Blueprint('users', __name__)
 """
 
 
-
-@login_required
 @users.route('/logout')
+@login_required
 def logout():
     logout_user()
     flash("You logged out.")

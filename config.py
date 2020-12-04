@@ -16,3 +16,4 @@ class ProductionConfig(Config):
     ENV = 'production'
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = 'mysql://root:root123456@localhost/covdb'
+    SECRET_KEY = secrets.token_urlsafe(16)
