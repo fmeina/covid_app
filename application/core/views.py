@@ -12,3 +12,8 @@ def index():
 @login_required
 def stats():
     return render_template('stats.html')
+
+@core.route('/report')
+@login_required
+def report():
+    return render_template('report.html')

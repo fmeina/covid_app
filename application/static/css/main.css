@@ -89,5 +89,11 @@ input[type=submit]:hover {
 }
 
 p.dotted {
-  outline-style: dotted; outline-color: #78e3e3;
+  outline-style: dotted;
+  outline-color: #78e3e3;
+}
+
+p.solid {
+  outline-style: solid;
+  outline-color: red;
 }
