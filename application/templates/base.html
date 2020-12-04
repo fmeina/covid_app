@@ -6,17 +6,27 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor/bootstrap.min.css') }}">
     <!-- custom css -->
-     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <!-- Font: Lato -->
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
 
     <meta charset="UTF-8">
-    <title> GamBrew {% block title %} {% endblock title %}</title>
+    <title> COVID-19 APP {% block title %} {% endblock title %}</title>
+
 </head>
 
 <body>
+
+<div class="header">
+  <a href="/" class="logo">COVID-19 APP</a>
+  <div class="header-right">
+    <a class="active" href="/">Home</a>
+    <a href="/login">Log in</a>
+    <a href="/register">Register</a>
+  </div>
+</div>
 
     <!-- Page content -->
     <div class="container">
