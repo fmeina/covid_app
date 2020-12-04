@@ -6,11 +6,8 @@ from application import db
 
 users = Blueprint('users', __name__)
 
-""" TODO: 
-    - naprawic flash() bo nie wyswietla napisu
-    - wyrzucic welcome_user() i zamiast tego przekierowac do core
-"""
 
+# TODO display error messages from forms
 
 @users.route('/logout')
 @login_required

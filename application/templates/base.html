@@ -19,14 +19,26 @@
 
 <body>
 
-<div class="header">
-  <a href="/" class="logo">COVID-19 APP</a>
-  <div class="header-right">
-    <a class="active" href="/">Home</a>
-    <a href="/login">Log in</a>
-    <a href="/register">Sign up</a>
-  </div>
-</div>
+    {% if current_user.is_authenticated %}
+        <div class="header">
+            <a href="/" class="logo">COVID-19 APP</a>
+            <div class="header-right">
+                <a href="/">Home</a>
+                <a href="/report">Report</a>
+                <a href="/stats">Statistics</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="header">
+            <a href="/" class="logo">COVID-19 APP</a>
+            <div class="header-right">
+                <a href="/">Home</a>
+                <a href="/login">Log in</a>
+                <a href="/register">Sign up</a>
+            </div>
+        </div>
+    {% endif %}
+
 
     <!-- Page content -->
     <div class="container">
