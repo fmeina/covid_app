@@ -58,6 +58,16 @@
     {% endblock content %}
     </div>
 
+    <footer>
+        {% if current_user.is_authenticated %}
+            <a href="/logout">Log out</a>
+        {% endif %}
+    <br>
+        Copyright &copy; Filip Meina
+    <br>
+    <br>
+    </footer>
+
     <!-- SCRIPTS -->
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/ba76e96f76.js" crossorigin="anonymous"></script>

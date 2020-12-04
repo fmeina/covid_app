@@ -61,7 +61,7 @@ input[type=submit]:hover {
 
 /* Change the background color on mouse-over */
 .header a:hover {
-  background-color: #ddd;
+  background-color: #e378e1;
   color: black;
 }
 
@@ -96,4 +96,15 @@ p.dotted {
 p.solid {
   outline-style: solid;
   outline-color: red;
+}
+
+footer {
+	position: fixed;
+    height: auto;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	background-color: #f1f1f1;
+	color: #e378e1;
+	text-align: center;
 }
