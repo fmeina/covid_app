@@ -1,12 +1,13 @@
 from flask import render_template, request, Blueprint
 from flask_login import login_required, current_user
+from application.core.article_scraper import text1
 
 core = Blueprint('core', __name__)
 
 
 @core.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html', current_user=current_user)
+    return render_template('index.html', current_user=current_user, text1=text1)
 
 
 @core.route('/stats')

@@ -58,15 +58,6 @@
     {% endblock content %}
     </div>
 
-    <footer>
-        {% if current_user.is_authenticated %}
-            <a href="/logout">Log out</a>
-        {% endif %}
-    <br>
-        Copyright &copy; Filip Meina
-    <br>
-    <br>
-    </footer>
 
     <!-- SCRIPTS -->
     <!-- FontAwesome -->
@@ -77,6 +68,20 @@
     <script src="{{ url_for('static', filename='js/vendor/bootstrap.bundle.min.js') }}"></script>
     <!-- main.js script -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
 </body>
+
+<footer>
+    {% if current_user.is_authenticated %}
+        <a href="/logout">Log out</a>
+    {% endif %}
+    <br>
+        Copyright &copy; Filip Meina
+    <br>
+
+</footer>
+
+
 
 </html>
