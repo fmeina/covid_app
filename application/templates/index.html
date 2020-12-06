@@ -3,10 +3,9 @@
 {% block content %}
 
 <div class="jumbotron mt-2 text-center">
-    <h1>Home page</h1>
-   {% for code in text1 %}
-        {% print(code.text) %}
-    {% endfor %}
+    {% autoescape false %}
+    <p>{{ text1[0] }}
+{% endautoescape %}
 </div>
 
 {% endblock content %}
