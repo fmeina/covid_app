@@ -6,12 +6,13 @@
 <center><h1>Sign up</h1></center>
     <br>
 
+{% from "_formhelpers.html" import render_field %}
 <form method="post">
     {{ form.hidden_tag() }}
-    {{ form.email.label }} {{ form.email() }}<br>
-    {{ form.login.label }} {{ form.login() }}<br>
-    {{ form.password.label }} {{ form.password() }}<br>
-    {{ form.pass_confirm.label }} {{ form.pass_confirm() }}<br>
+    {{ render_field(form.email) }}<br>
+    {{ render_field(form.login) }}<br>
+    {{ render_field(form.password) }}<br>
+    {{ render_field(form.pass_confirm) }}<br>
     {{ form.submit() }}
 
 </form>

@@ -10,6 +10,10 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log in')
 
+    def validate_email(self, email):
+        if Account.query.filter_by(email=email.data).first() is None:
+            raise ValidationError('No user with this email found.')
+
 
 class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])

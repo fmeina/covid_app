@@ -6,10 +6,11 @@
 <center><h1>Sign in</h1></center>
     <br>
 
+{% from "_formhelpers.html" import render_field %}
 <form method="post">
     {{ form.hidden_tag() }}
-    {{ form.email.label }} {{ form.email() }}
-    {{ form.password.label }} {{ form.password() }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
     {{ form.submit() }}
 
 </form>
