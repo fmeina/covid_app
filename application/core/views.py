@@ -16,6 +16,8 @@ def stats():
     return render_template('stats.html', current_user=current_user)
 
 
+
+
 @core.route('/report')
 @login_required
 def report():
