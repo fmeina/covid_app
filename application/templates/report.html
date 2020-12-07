@@ -4,6 +4,11 @@
 
 <div class="jumbotron mt-2 text-center">
     <h1>Report your situation</h1>
+    <h2>Upload new File</h2>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file accept=".pdf,.doc,.docx">
+      <input type=submit value=Upload>
+    </form>
 </div>
 
 {% endblock content %}
