@@ -10,7 +10,8 @@
     <!-- Font: Lato -->
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/favicon-16x16.png') }}">
 
     <meta charset="UTF-8">
     <title> COVID-19 APP {% block title %} {% endblock title %}</title>
@@ -19,26 +20,34 @@
 
 <body>
 
-    {% if current_user.is_authenticated %}
-        <div class="header">
-            <a href="/" class="logo">COVID-19 APP</a>
+<!-- TODO przycisk z nazwa usera nie klika sie na calym polu, przez ikony. -->
+    <div class="header">
+        <a href="{{ url_for('core.index') }}" class="logo">C<i class="fas fa-virus"></i>VID-19 APP</a>
+        {% if current_user.is_authenticated %}
             <div class="header-right">
-                <a href="/">Home</a>
-                <a href="/report">Report</a>
-                <a href="/stats">Statistics</a>
+                <a href="{{ url_for('core.index') }}">Home</a>
+                <a href="{{ url_for('core.report') }}">Report</a>
+                <a href="{{ url_for('core.stats') }}">Statistics</a>
+                <div class="dropdown-wrapper">
+                    <button class="dropbtn" onclick="userMenuDropdown()">
+                        <i class="far fa-user-circle" style="font-size:22px;"></i>
+                        {{ current_user.login }}
+                        <i class="fa fa-caret-down" style="font-size:16px;"></i>
+                    </button>
+                    <div class="dropdown-content" id="user-dropdown">
+                        <a href="{{ url_for('users.personal_info') }}">Personal information</a>
+                        <a href="{{ url_for('users.logout') }}">Log out</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    {% else %}
-        <div class="header">
-            <a href="/" class="logo">COVID-19 APP</a>
+        {% else %}
             <div class="header-right">
                 <a href="/">Home</a>
                 <a href="/login">Log in</a>
                 <a href="/register">Sign up</a>
             </div>
-        </div>
-    {% endif %}
-
+        {% endif %}
+    </div>
 
     <!-- Page content -->
     <div class="container">
@@ -73,15 +82,10 @@
 </body>
 
 <footer>
-    {% if current_user.is_authenticated %}
-        <a href="/logout">Log out</a>
-    {% endif %}
     <br>
         Copyright &copy; Filip Meina
     <br>
 
 </footer>
-
-
 
 </html>

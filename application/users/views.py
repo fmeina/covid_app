@@ -7,6 +7,11 @@ from application import db
 users = Blueprint('users', __name__)
 
 
+@users.route('/persomal-info')
+def personal_info():
+    return render_template('user_info.html')
+
+
 @users.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
