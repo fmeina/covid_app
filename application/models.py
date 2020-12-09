@@ -1,4 +1,4 @@
-from sqlalchemy.orm import relationship
+#from sqlalchemy.orm import relationship
 
 from application import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -16,6 +16,7 @@ class Account(db.Model, UserMixin):
     login = db.Column(db.String(64))
     password = db.Column(db.String(128))
     email = db.Column(db.String(64))
+    user_info = db.relationship('UserInfo', backref='account', lazy='dynamic')  # register relationship
 
     def __repr__(self):
         return "login" + " " + self.login
@@ -44,7 +45,7 @@ class UserInfo(db.Model):
     def __repr__(self):
         return "name" + " " + self.first_name + " " + self.last_name
 
-    def __init__(self, first_name, last_name, voivodeship, is_infected):
+    def __init__(self, first_name, last_name, voivodeship, is_infected):  # nie wiem czy nie trzeba dodac account_id
         self.first_name = first_name
         self.last_name = last_name
         self.voivodeship = voivodeship
