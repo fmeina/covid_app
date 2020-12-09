@@ -1,15 +1,25 @@
 from flask import render_template, request, redirect, request, url_for, flash, abort, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
-from application.users.forms import LoginForm, RegistrationForm
-from application.models import Account
+from application.users.forms import LoginForm, RegistrationForm, UserInfoForm
+from application.models import Account, UserInfo
 from application import db
 
 users = Blueprint('users', __name__)
 
 
-@users.route('/persomal-info')
+@users.route('/personal-info', methods=['GET', 'POST'])
+@login_required
 def personal_info():
-    return render_template('user_info.html')
+    form = UserInfoForm()
+    if form.validate_on_submit():
+        user_info = UserInfo(first_name=form.first_name.data,
+                             last_name=form.last_name.data,
+                             voivodeship=form.voivodeship.data,
+                             is_infected=form.is_infected.data)
+        db.session.add(user_info)
+        db.session.commit()
+        flash('Your personal information is saved now')
+    return render_template('user_info.html', form=form)
 
 
 @users.route('/register', methods=['GET', 'POST'])

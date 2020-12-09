@@ -6,6 +6,16 @@
 
     <div class="jumbotron mt-2 text-center">
         <h1>User information</h1>
+    {% from "_formhelpers.html" import render_field %}
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ render_field(form.first_name) }}<br>
+    {{ render_field(form.last_name) }}<br>
+    {{ render_field(form.voivodeship) }}<br>
+    {{ render_field(form.is_infected) }}<br>
+    {{ form.submit() }}
+
+</form>
     </div>
 
 {% endblock content %}
