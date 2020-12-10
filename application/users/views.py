@@ -17,10 +17,18 @@ def personal_info():
                              last_name=form.last_name.data,
                              voivodeship=form.voivodeship.data,
                              is_infected=form.is_infected.data)
-        db.session.add(user_info)
-        db.session.commit()
-        flash('Your personal information is saved now')
+        if UserInfo.query.filter(UserInfo.account_id == current_user.account_id).first() is not None:
+            old_row = UserInfo.query.filter(UserInfo.account_id == current_user.account_id).first()
+            db.session.delete(old_row)
+            db.session.add(user_info)
+            db.session.commit()
+            flash('Your personal information is updated now')
+        else:
+            db.session.add(user_info)
+            db.session.commit()
+            flash('Your personal information is saved now')
     return render_template('user_info.html', form=form)
+
 
 
 @users.route('/register', methods=['GET', 'POST'])
