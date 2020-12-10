@@ -2,7 +2,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 
-url = 'https://www.gov.pl/web/koronawirus/aktualne-zasady-i-ograniczenia/'
+url = 'https://www.gov.pl/web/coronavirus/temporary-limitations/'
 
 
 request = urllib.request.Request(url)

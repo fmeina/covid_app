@@ -7,13 +7,12 @@ from application.utils.file_uploader import allowed_file
 from application import app
 import os
 
-
 core = Blueprint('core', __name__)
 
 
 @core.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html', current_user=current_user, text1=text1)
+    return render_template('index.html', current_user=current_user)
 
 
 @core.route('/stats')
@@ -46,3 +45,8 @@ def report():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
             flash('File updated successfully')
     return render_template('report.html', current_user=current_user)
+
+
+@core.route('/actual_restrictions')
+def actual_restrictions():
+    return render_template('actual_restrictions.html', current_user=current_user, text1=text1)

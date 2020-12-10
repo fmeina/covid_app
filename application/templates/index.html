@@ -3,9 +3,16 @@
 {% block content %}
 
 <div class="jumbotron mt-2 text-center">
-    {% autoescape false %}
-    <p>{{ text1[0] }}
-{% endautoescape %}
+<h1>COVID-19 APP</h1>
+<h2>
+    COVID-19 APP is simple web application, where you can check actual restrictions, check statistics for whole world or
+    registered users. You have also possibility to upload your form for infected people, which is meant to be send to
+    your WSSE.
+</h2>
+
+<hr class="my-4">
+<a class="btn btn-primary btn-lg" href="{{ url_for('core.actual_restrictions') }}" role="button">Check actual restrictions</a>
+
 </div>
 
 {% endblock content %}

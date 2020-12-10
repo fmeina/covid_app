@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %} Actual restrictions {% endblock title %}
+
+{% block content %}
+
+<div class="jumbotron mt-2 text-left">
+    {% autoescape false %}
+        <p>{{ text1[0] }}
+    {% endautoescape %}
+</div>
+
+{% endblock content %}
