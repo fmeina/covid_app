@@ -45,7 +45,8 @@ class UserInfo(db.Model):
     def __repr__(self):
         return "name" + " " + self.first_name + " " + self.last_name
 
-    def __init__(self, first_name, last_name, voivodeship, is_infected):  # nie wiem czy nie trzeba dodac account_id
+    def __init__(self, account_id, first_name, last_name, voivodeship, is_infected):  # nie wiem czy nie trzeba dodac account_id
+        self.account_id = account_id
         self.first_name = first_name
         self.last_name = last_name
         self.voivodeship = voivodeship

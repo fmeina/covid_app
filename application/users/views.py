@@ -12,7 +12,8 @@ users = Blueprint('users', __name__)
 def personal_info():
     form = UserInfoForm()
     if form.validate_on_submit():
-        user_info = UserInfo(first_name=form.first_name.data,
+        user_info = UserInfo(account_id=current_user.account_id,
+                             first_name=form.first_name.data,
                              last_name=form.last_name.data,
                              voivodeship=form.voivodeship.data,
                              is_infected=form.is_infected.data)
