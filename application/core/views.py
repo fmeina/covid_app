@@ -4,7 +4,8 @@ from application.utils.article_scraper import text1
 from werkzeug.utils import secure_filename
 from flask import flash, request, redirect, url_for
 from application.utils.file_uploader import allowed_file
-from application import app
+from application import app, db
+from application.utils.infections_sql import *
 import os
 
 core = Blueprint('core', __name__)
@@ -18,7 +19,23 @@ def index():
 @core.route('/stats')
 @login_required
 def stats():
-    return render_template('stats.html', current_user=current_user)
+    return render_template('stats.html', current_user=current_user, number_result=number_result,
+                           number_result1=number_result1,
+                           number_result2=number_result2,
+                           number_result3=number_result3,
+                           number_result4=number_result4,
+                           number_result5=number_result5,
+                           number_result6=number_result6,
+                           number_result7=number_result7,
+                           number_result8=number_result8,
+                           number_result9=number_result9,
+                           number_result10=number_result10,
+                           number_result11=number_result11,
+                           number_result12=number_result12,
+                           number_result13=number_result13,
+                           number_result14=number_result14,
+                           number_result15=number_result15,
+                           number_result16=number_result16)
 
 
 @core.route('/report', methods=['GET', 'POST'])

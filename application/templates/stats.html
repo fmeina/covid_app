@@ -4,9 +4,18 @@
 
 <div class="jumbotron mt-2 text-center">
     <h1>Stats</h1>
-</div>
-
 <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px" marginheight="100px"></iframe>
     <br>
+<h2>Show number of infected people from this website</h2>
+<p>Actual number of infected people is: {{ number_result }}</p>
+<p>Data for every voivodeship: Lower Silesian {{ number_result1 }}, Kuyavian-Pomeranian {{ number_result2 }},
+Lublin {{ number_result3 }}, Lubusz {{ number_result4 }}, Łódź {{ number_result5 }},
+Lesser Poland {{ number_result6 }}, Masovian {{ number_result7 }}, Opole {{ number_result8 }},
+Subcarpathian {{ number_result9 }}, Podlaskie {{ number_result10 }}, Pomeranian {{ number_result11 }},
+Silesian {{ number_result12 }}, Holy Cross {{ number_result13 }}, Warmian-Masurian {{ number_result14 }},
+Greater Poland {{ number_result15 }}, West Pomeranian {{ number_result16 }}</p>
+
+</div>
+
 
 {% endblock content %}
