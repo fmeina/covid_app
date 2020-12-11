@@ -18,7 +18,7 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     ENV = 'production'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:root123456@localhost/covdb'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root123456@localhost/covdb'
     SECRET_KEY = secrets.token_urlsafe(16)
     UPLOAD_FOLDER = 'application/uploads/forms'
     ALLOWED_EXTENSIONS = {'txt', 'pdf', 'doc', 'docx', 'odt'}
