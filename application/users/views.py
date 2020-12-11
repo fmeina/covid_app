@@ -17,18 +17,25 @@ def personal_info():
                              last_name=form.last_name.data,
                              voivodeship=form.voivodeship.data,
                              is_infected=form.is_infected.data)
+        data_account_id = user_info.account_id
+        data_first_name = user_info.first_name
+        data_last_name = user_info.last_name
+        data_voivodeship = user_info.voivodeship
+        data_is_infected = user_info.is_infected
         if UserInfo.query.filter(UserInfo.account_id == current_user.account_id).first() is not None:
-            old_row = UserInfo.query.filter(UserInfo.account_id == current_user.account_id).first()
-            db.session.delete(old_row)
-            db.session.add(user_info)
+            db.engine.execute("DELETE FROM userinfo WHERE account_id = %s", data_account_id)
+            db.engine.execute(
+                "INSERT INTO userinfo(account_id, first_name, last_name, voivodeship, is_infected) VALUES(%s, %s, %s, %s, %s)",
+                data_account_id, data_first_name, data_last_name, data_voivodeship, data_is_infected)
             db.session.commit()
             flash('Your personal information is updated now')
         else:
-            db.session.add(user_info)
+            db.engine.execute(
+                "INSERT INTO userinfo(account_id, first_name, last_name, voivodeship, is_infected) VALUES(%s, %s, %s, %s, %s)",
+                data_account_id, data_first_name, data_last_name, data_voivodeship, data_is_infected)
             db.session.commit()
             flash('Your personal information is saved now')
     return render_template('user_info.html', form=form)
-
 
 
 @users.route('/register', methods=['GET', 'POST'])
@@ -40,7 +47,11 @@ def register():
         user = Account(email=form.email.data,
                        login=form.login.data,
                        password=form.password.data)
-        db.session.add(user)
+        data_login = user.login
+        data_email = user.email
+        data_password = user.password
+        db.engine.execute("INSERT INTO accounts(login, email, password) VALUES(%s, %s, %s)", data_login, data_email,
+                          data_password)
         db.session.commit()
         flash('Thanks for registering! Now you can login!')
         return redirect(url_for('users.login'))
