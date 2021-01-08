@@ -6,9 +6,11 @@ from flask import flash, request, redirect, url_for
 from application.utils.file_uploader import allowed_file
 from application import app, db
 from application.utils.infections_sql import *
+import pdfkit
 import os
 
 core = Blueprint('core', __name__)
+config = pdfkit.configuration(wkhtmltopdf="D:\\pytek\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
 
 
 @core.route('/', methods=['GET', 'POST'])
@@ -42,6 +44,56 @@ def stats():
                            number_result14=number_result14,
                            number_result15=number_result15,
                            number_result16=number_result16)
+
+
+@core.route('/stats_file')
+@login_required
+def stats_file():
+    return render_template('stats_file.html', current_user=current_user, number_result=number_result,
+                           number_result1=number_result1,
+                           number_result2=number_result2,
+                           number_result3=number_result3,
+                           number_result4=number_result4,
+                           number_result5=number_result5,
+                           number_result6=number_result6,
+                           number_result7=number_result7,
+                           number_result8=number_result8,
+                           number_result9=number_result9,
+                           number_result10=number_result10,
+                           number_result11=number_result11,
+                           number_result12=number_result12,
+                           number_result13=number_result13,
+                           number_result14=number_result14,
+                           number_result15=number_result15,
+                           number_result16=number_result16)
+
+
+@core.route('/stats_file_pdf')
+def stats_pdf():
+    rendered = render_template('stats_file.html', current_user=current_user, number_result=number_result,
+                               number_result1=number_result1,
+                               number_result2=number_result2,
+                               number_result3=number_result3,
+                               number_result4=number_result4,
+                               number_result5=number_result5,
+                               number_result6=number_result6,
+                               number_result7=number_result7,
+                               number_result8=number_result8,
+                               number_result9=number_result9,
+                               number_result10=number_result10,
+                               number_result11=number_result11,
+                               number_result12=number_result12,
+                               number_result13=number_result13,
+                               number_result14=number_result14,
+                               number_result15=number_result15,
+                               number_result16=number_result16)
+    pdf = pdfkit.from_string(rendered, False, configuration=config)
+
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'inline; filename=stats.pdf'
+
+    return response
 
 
 @core.route('/report', methods=['GET', 'POST'])
