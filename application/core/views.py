@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, make_response
+from flask import render_template, Blueprint, request, make_response, jsonify
 from flask_login import login_required, current_user
 from application.utils.article_scraper import text1
 from werkzeug.utils import secure_filename
@@ -94,6 +94,27 @@ def stats_pdf():
     response.headers['Content-Disposition'] = 'inline; filename=stats.pdf'
 
     return response
+
+
+@core.route('/stats_json')
+def stats_json():
+    return jsonify(all=number_result,
+                   ds=number_result1,
+                   kp=number_result2,
+                   lb=number_result3,
+                   ls=number_result4,
+                   ld=number_result5,
+                   mp=number_result6,
+                   mz=number_result7,
+                   op=number_result8,
+                   pk=number_result9,
+                   pl=number_result10,
+                   pm=number_result11,
+                   sl=number_result12,
+                   sk=number_result13,
+                   wm=number_result14,
+                   wp=number_result15,
+                   zp=number_result16)
 
 
 @core.route('/report', methods=['GET', 'POST'])
