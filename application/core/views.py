@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint
+from flask import render_template, Blueprint, request, make_response
 from flask_login import login_required, current_user
 from application.utils.article_scraper import text1
 from werkzeug.utils import secure_filename
@@ -13,7 +13,13 @@ core = Blueprint('core', __name__)
 
 @core.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html', current_user=current_user)
+    count = int(request.cookies.get('visit-count', 0))
+    count += 1
+    count_number = 'You have visited this page ' + str(count) + ' times'
+
+    resp = make_response(render_template('index.html', current_user=current_user, count_number=count_number))
+    resp.set_cookie('visit-count', str(count))
+    return resp
 
 
 @core.route('/stats')
