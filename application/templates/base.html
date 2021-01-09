@@ -6,7 +6,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor/bootstrap.min.css') }}">
     <!-- custom css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link id="pagestyle" rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <!-- Font: Lato -->
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <!-- Favicon -->
@@ -82,9 +82,9 @@
 </body>
 
 <footer>
-    <br>
-        Copyright &copy; Filip Meina
-    <br>
+<button type="button" class="btn btn-dark btn-sm" onclick="swapStyleSheet('{{ url_for('static', filename='css/dark.css') }}')">Dark Style</button>
+<button type="button" class="btn btn-light btn-sm" onclick="swapStyleSheet('{{ url_for('static', filename='css/main.css') }}')">Classic Style</button>
+
 
 </footer>
 

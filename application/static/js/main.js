@@ -10,3 +10,11 @@ window.onclick = function(e) {
         }
     }
 }
+
+function swapStyleSheet(sheet){
+    document.getElementById('pagestyle').setAttribute('href', sheet);
+    localStorage.setItem('currentStyleSheet', sheet);
+}
+window.onload = function() {
+     document.getElementById('pagestyle').setAttribute('href', localStorage.getItem('currentStyleSheet'));
+}
