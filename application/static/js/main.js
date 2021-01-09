@@ -1,3 +1,4 @@
+'use strict';
 function userMenuDropdown() {
   document.getElementById("user-dropdown").classList.toggle("show");
 }
