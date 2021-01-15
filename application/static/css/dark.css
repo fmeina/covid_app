@@ -176,6 +176,8 @@ p.solid {
   outline-color: red;
 }
 
-
+div.result {
+    font-size: 20px;
+}
 
 

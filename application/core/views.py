@@ -146,3 +146,9 @@ def report():
 @core.route('/actual_restrictions')
 def actual_restrictions():
     return render_template('actual_restrictions.html', current_user=current_user, text1=text1)
+
+
+@core.route('/ajax', methods=['POST'])
+def ajax_request():
+    username = request.form['username']
+    return jsonify(username=username)

@@ -16,6 +16,33 @@
     <br>
 
 <small>{{ count_number }}</small>
+<br>
+<br>
+<h1>In which category for vaccine will you be?</h1>
+    <br>
+<form action="" method="POST">
+    <h5>How old are you?</h5>
+<input type="number" name="age" id="age">
+    <br>
+<input class="form-check-input" type="checkbox" value="1" id="swh">
+<label class="form-check-label" for="swh">
+    Do you live in social welfare home?
+</label>
+    <br>
+<input class="form-check-input" type="checkbox" value="1" id="gov">
+<label class="form-check-label" for="gov">
+    Are you government worker (teacher, police officer, firefighter etc.)?
+</label>
+    <br>
+<input class="form-check-input" type="checkbox" value="1" id="sick">
+<label class="form-check-label" for="sick">
+    Are you chronically ill, undergoing treatment or diagnosis?
+</label>
+    <br>
+<input type="button" value="Submit" onclick="return loadXMLDoc()">
+</form>
+    <h3>Your category is:</h3>
+<div class="result" id="myDiv"></div>
 
 </div>
 
